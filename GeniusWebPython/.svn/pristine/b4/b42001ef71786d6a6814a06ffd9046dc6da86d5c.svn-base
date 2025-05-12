@@ -1,0 +1,58 @@
+import unittest
+from unittest.mock import Mock
+
+from tudelft_utilities_logging.ReportToLogger import ReportToLogger
+from tudelft_utilities_logging.Reporter import Reporter
+
+from geniusweb.actions.PartyId import PartyId
+from geniusweb.protocol.CurrentNegoState import CurrentNegoState
+from geniusweb.protocol.ProtocolException import ProtocolException
+from geniusweb.protocol.session.SessionProtocol import SessionProtocol
+from geniusweb.protocol.session.SessionSettings import SessionSettings
+from geniusweb.protocol.session.SessionState import SessionState
+from geniusweb.simplerunner.ClassPathConnectionFactory import ClassPathConnectionFactory
+from geniusweb.simplerunner.NegoRunner import NegoRunner
+import unittest.mock as mock
+
+
+class SessionRunnerTest(unittest.TestCase):
+	PROTOCOL_EXC = ProtocolException(
+			"fake protocol exception", PartyId("test"))
+	NOW = 1000
+	logger = ReportToLogger("test")
+
+	def setUp(self):
+		self.finishedEvent = Mock(CurrentNegoState)
+		self.finishedstate = Mock(SessionState)
+		self.finishedstate.isFinal=Mock(return_value=True)
+		self.finishedEvent.getState=Mock(return_value=self.finishedstate)
+
+	def testSmoke(self):
+		NegoRunner(Mock(SessionSettings),
+				Mock(ClassPathConnectionFactory), self.logger, 5000)
+
+	def testRun(self):
+		settings = Mock(SessionSettings)
+		protocol = Mock(SessionProtocol)
+		settings.getProtocol=Mock(return_value=protocol)
+		factory = Mock(	ClassPathConnectionFactory)
+
+		runner=NegoRunner(settings, factory, self.logger, 5000)
+		
+		spyProtocolAddlistener = mock.patch.object(protocol, 'addListener',wraps=protocol.addListener)
+		spyProtocolStart = mock.patch.object(protocol, 'start',wraps=protocol.start)
+		spyRunnerStop:Mock = mock.patch.object(runner, 'stop', wraps=runner._stop)
+		
+		runner.run();
+		spyProtocolAddlistener.test_assert_called_once()
+		spyProtocolStart.test_assert_called_once()
+		spyRunnerStop.test_assert_not_called()
+
+
+	def testStopNormally(self):
+		# CAN NOT TEST: PYTHON HAS NO SPY WITH ARG CAPTURE
+		pass
+	
+	def testStopWithError(self) :
+		# CAN NOT TEST: PYTHON HAS NO SPY WITH ARG CAPTURE
+		pass

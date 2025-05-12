@@ -1,0 +1,3 @@
+https://tracinsy.ewi.tudelft.nl/pubtrac/GeniusWebPython/export/94/exampleparties/timedependentparty/dist/timedependentparty-1.2.1.tar.gz
+mypy
+

@@ -1,0 +1,37 @@
+{
+    "SAOPSettings": {
+        "participants": [
+            {
+                "TeamInfo": {
+                    "parties": [
+                        {
+                            "party": {
+                                "partyref": "pythonpath:GeniusWebPython.exampleparties.randomparty.randomparty.RandomParty",
+                                "parameters": {}
+                            },
+                            "profile": "file:GeniusWebPython/geniuswebcore/test/resources/party/party1.json"
+                        }
+                    ]
+                }
+            },
+            {
+                "TeamInfo": {
+                    "parties": [
+                        {
+                            "party": {
+                                "partyref": "pythonpath:GeniusWebPython.exampleparties.randomparty.randomparty.RandomParty",
+                                "parameters": {}
+                            },
+                            "profile": "file:GeniusWebPython/geniuswebcore/test/resources/japantrip1.json"
+                        }
+                    ]
+                }
+            }
+        ],
+        "deadline": {
+            "DeadlineTime": {
+                "durationms": 1000
+            }
+        }
+    }
+}

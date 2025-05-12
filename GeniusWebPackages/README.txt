@@ -1,0 +1,1 @@
+geniusweb-1.2.1.tar.gz : D:\kimura\GitHub\2025_SK_Bid\GeniusWebPython\exampleparties\randomparty\requirements.txt
