@@ -1,0 +1,10 @@
+matplotlib
+numpy
+PyQt5
+PyQt5-sip
+PyQt5-Qt5
+python-dateutil
+pillow
+websocket-client
+pyson @ file:///E:/Gitclone/2025_SK_Bid/libs/pyson-1.1.3.tar.gz
+geniusweb @ file:///E:/Gitclone/2025_SK_Bid/libs/geniusweb-1.2.1.tar.gz

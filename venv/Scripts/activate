@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\kimura\GitHub\2025_SK_Bid\venv"
+VIRTUAL_ENV="E:\Gitclone\2025_SK_Bid\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
